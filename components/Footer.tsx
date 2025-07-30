@@ -110,7 +110,7 @@ export default function Footer() {
                   className="group inline-flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors duration-300"
                 >
                   <Phone className="h-4 w-4" />
-                  <span className="group-hover:translate-x-1 transition-transform duration-300">+1 (234) 567-890</span>
+                  <span className="group-hover:translate-x-1 transition-transform duration-300">01026542643</span>
                 </a>
               </div>
 
@@ -121,7 +121,7 @@ export default function Footer() {
                   className="group inline-flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors duration-300"
                 >
                   <Mail className="h-4 w-4" />
-                  <span className="group-hover:translate-x-1 transition-transform duration-300">hello@thetatech.com</span>
+                  <span className="group-hover:translate-x-1 transition-transform duration-300">ThetaTech18@gmail.com</span>
                 </a>
               </div>
 
@@ -129,7 +129,7 @@ export default function Footer() {
                 <h3 className="font-semibold text-foreground mb-4">Location</h3>
                 <div className="inline-flex items-center gap-2 text-muted-foreground">
                   <MapPin className="h-4 w-4" />
-                  <span>San Francisco, CA</span>
+                  <span>Giza, Egypt</span>
                 </div>
               </div>
 
