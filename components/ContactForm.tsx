@@ -30,7 +30,7 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
-      
+
       // Initial state
       if (overlayRef.current) {
         overlayRef.current.style.opacity = '0';
@@ -81,13 +81,13 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
       }, 600);
     } else {
       document.body.style.overflow = '';
-      
+
       // Animate out
       if (formWrapperRef.current) {
         formWrapperRef.current.style.transform = 'translate3d(0px, 2%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)';
         formWrapperRef.current.style.opacity = '0';
       }
-      
+
       setTimeout(() => {
         if (textWrapperRef.current) {
           textWrapperRef.current.style.transform = 'translate3d(0px, 10%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)';
@@ -115,7 +115,7 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     try {
       await new Promise(resolve => setTimeout(resolve, 2000));
@@ -133,7 +133,7 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
           message: ''
         });
       }, 3000);
-    } catch (error) {
+    } catch {
       setShowError(true);
       setTimeout(() => setShowError(false), 3000);
     } finally {
@@ -211,8 +211,8 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
             </h2>
             <p className="text-muted-foreground leading-relaxed">
               Tell me briefly about your project! Simply fill out the form or send me an{" "}
-              <a 
-                href="mailto:hello@thetatech.com?subject=Hi" 
+              <a
+                href="mailto:hello@thetatech.com?subject=Hi"
                 className="text-accent hover:text-accent/80 transition-colors duration-300 underline"
               >
                 email
@@ -233,8 +233,8 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
             }}
           >
             <div className="w-form">
-              <form 
-                onSubmit={handleSubmit} 
+              <form
+                onSubmit={handleSubmit}
                 className="form space-y-6"
                 style={{ display: showSuccess || showError ? 'none' : 'block' }}
               >
@@ -355,9 +355,9 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
 
               {/* Success Message */}
               {showSuccess && (
-                <div 
+                <div
                   className="success-message w-form-done text-center py-16"
-                  role="region" 
+                  role="region"
                   aria-label="Email Form success"
                 >
                   <div className="text-block">
@@ -376,9 +376,9 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
 
               {/* Error Message */}
               {showError && (
-                <div 
+                <div
                   className="error-message w-form-fail text-center py-16"
-                  role="region" 
+                  role="region"
                   aria-label="Email form failure"
                 >
                   <div>
