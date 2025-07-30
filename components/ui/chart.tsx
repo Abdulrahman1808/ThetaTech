@@ -125,7 +125,7 @@ function ChartTooltipContent({
     indicator?: "line" | "dot" | "dashed";
     nameKey?: string;
     labelKey?: string;
-    payload?: Array<{ dataKey?: string; name?: string; value?: unknown; color?: string; payload?: { fill?: string } }>;
+    payload?: any[];
     label?: string;
   }) {
   const { config } = useChart();
@@ -261,7 +261,7 @@ function ChartLegendContent({
 }: React.ComponentProps<"div"> & {
   hideIcon?: boolean;
   nameKey?: string;
-  payload?: Array<{ dataKey?: string; name?: string; value?: unknown; color?: string }>;
+  payload?: any[];
   verticalAlign?: string;
 }) {
   const { config } = useChart();
@@ -278,13 +278,13 @@ function ChartLegendContent({
         className,
       )}
     >
-      {payload?.map((item) => {
+      {payload?.map((item, index) => {
         const key = `${nameKey || item.dataKey || "value"}`;
         const itemConfig = getPayloadConfigFromPayload(config, item, key);
 
         return (
           <div
-            key={item.value}
+            key={String(item.value || item.dataKey || index)}
             className={cn(
               "[&>svg]:text-muted-foreground flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3",
             )}
