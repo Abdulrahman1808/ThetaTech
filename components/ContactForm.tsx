@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { X, Send } from "lucide-react";
+import { apiClient } from "../src/api/client";
 
 
 interface ContactFormProps {
@@ -116,9 +117,17 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Submit to backend API
+      await apiClient.submitProjectInquiry({
+        name: formData.name,
+        email: formData.email,
+        company: formData.company,
+        phone: formData.phone,
+        projectDetails: formData.projectDetails,
+        message: formData.message
+      });
+
       setShowSuccess(true);
       setTimeout(() => {
         setShowSuccess(false);
@@ -133,7 +142,8 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
           message: ''
         });
       }, 3000);
-    } catch {
+    } catch (error) {
+      console.error('Form submission error:', error);
       setShowError(true);
       setTimeout(() => setShowError(false), 3000);
     } finally {

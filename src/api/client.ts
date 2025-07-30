@@ -75,10 +75,10 @@ class ApiClient {
   async submitProjectInquiry(data: {
     name: string;
     email: string;
-    projectType: string;
-    budget?: string;
-    timeline?: string;
-    description: string;
+    company?: string;
+    phone?: string;
+    projectDetails: string;
+    message?: string;
   }): Promise<ApiResponse> {
     return this.request('/project-inquiry', {
       method: 'POST',

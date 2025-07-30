@@ -161,27 +161,27 @@ app.post('/api/newsletter', async (req, res) => {
 // Project inquiry endpoint
 app.post('/api/project-inquiry', async (req, res) => {
   try {
-    const { name, email, projectType, budget, timeline, description } = req.body;
+    const { name, email, company, phone, projectDetails, message } = req.body;
 
-    if (!name || !email || !projectType || !description) {
+    if (!name || !email || !projectDetails) {
       return res.status(400).json({ 
-        error: 'Missing required fields: name, email, project type, and description are required' 
+        error: 'Missing required fields: name, email, and project details are required' 
       });
     }
 
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: process.env.CONTACT_EMAIL || process.env.EMAIL_USER,
-      subject: `New Project Inquiry: ${projectType}`,
+      subject: `New Project Inquiry from ${name}`,
       html: `
         <h2>New Project Inquiry</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Project Type:</strong> ${projectType}</p>
-        <p><strong>Budget:</strong> ${budget || 'Not specified'}</p>
-        <p><strong>Timeline:</strong> ${timeline || 'Not specified'}</p>
-        <p><strong>Description:</strong></p>
-        <p>${description}</p>
+        <p><strong>Company:</strong> ${company || 'Not specified'}</p>
+        <p><strong>Phone:</strong> ${phone || 'Not specified'}</p>
+        <p><strong>Project Details:</strong></p>
+        <p>${projectDetails}</p>
+        ${message ? `<p><strong>Additional Information:</strong></p><p>${message}</p>` : ''}
         <hr>
         <p><em>Sent from Theta Tech website project inquiry form</em></p>
       `
